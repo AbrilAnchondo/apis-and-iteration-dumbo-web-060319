@@ -20,23 +20,13 @@ def get_character_movies_from_api(character_name)
 
   #response_hash["results"][0]["films"]
 
-  response_hash["results"].each do |character_hash|
-    if character_hash["name"].downcase == character_name.downcase
-      character_hash["film"]
-    else
-      nil
-    end
-  end
-end
-
-
-
   films = response_hash["results"][0]["films"]
   films.each do |film_url|
     result << film_api_helper(film_url) 
   end
   
   return result
+end
 
   # iterate over the response hash to find the collection of `films` for the given
   #   `character`
@@ -53,7 +43,7 @@ end
   #  and that method will do some nice presentation stuff like puts out a list
   #  of movies by title. Have a play around with the puts with other info about a given film.
 
-end
+
 
 def print_movies(films)
   films.each do |film_hash|
